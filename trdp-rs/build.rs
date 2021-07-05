@@ -23,8 +23,7 @@ fn main() {
         .clang_arg("-DPOSIX")
         .clang_arg("-DL_ENDIAN")
         .clang_arg("-DHAS_UUID")
-        //.clang_arg("-Itrdp/include")
-        //.clang_arg("-Ltrdp/lib")
+        .clang_arg("-I../trdp/include")
         // Special handling (fd_set is already defined in libc crate)
         .blacklist_type("fd_set")
         // Tell cargo to invalidate the built crate whenever any of the

@@ -1,11 +1,11 @@
-FROM rust:latest 
+FROM rust:latest
 
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     build-essential \
     libssl-dev \
-    musl-tools \ 
+    musl-tools \
     && true
 
 
@@ -15,8 +15,6 @@ RUN apt-get -y install \
              telnet \
              tcpdump
 
-COPY trdp/lib/libtrdpap.a /usr/local/lib/
-COPY trdp/include/trdp /usr/local/include/trdp
 
 #profiling
 RUN apt-get -y install linux-tools-4.19 moreutils
@@ -27,7 +25,7 @@ WORKDIR /prellblock
 
 #RUN rustup target add ${TARGET}
 
-RUN RUST_BACKTRACE=full 
+RUN RUST_BACKTRACE=full
 
 RUN cargo build --release
 
